@@ -1,13 +1,13 @@
 const { userData } = require("../data/users");
 exports.userList = async (req, res) => {
     const data = userData.filter(eachName => eachName.name.toLocaleLowerCase() == req.query?.name?.toLocaleLowerCase());
-    const age = userData.filter(eachAge => eachAge.age == req.query?.age_lt);
-    console.log("data", data);
+    const age = userData.filter(eachAge => eachAge.age >= req.query?.age_lt);
+    const age_gt = age.filter(eachAge_gt => eachAge_gt.age <= req.query?.age_gt);
     if (data.length) {
         return res.json(data);
     }
-    if (age.length) {
-        return res.json(age);
+    if (age_gt.length) {
+        return res.json(age_gt);
     }
     else {
         return res.json(userData);
