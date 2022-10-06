@@ -15,7 +15,7 @@ exports.userList = async (req, res) => {
         return res.json(result);
     }
 
-    else if(req.query?.req.query?.name) {
+    else if(req.query?.name) {
         const result = userData.filter(eachName => eachName.name.toLocaleLowerCase() == req.query?.name?.toLocaleLowerCase());
         return res.json(result);
     }
